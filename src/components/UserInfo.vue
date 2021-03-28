@@ -65,13 +65,12 @@ export default {
           console.log(err)
         })
     }
-    },
-    beforeMount () {
-      this.isLoading = true;
-      this.getData();
-    }
+  },
+  beforeMount () {
+    this.isLoading = true
+    this.getData()
   }
-
+}
 </script>
 <style scoped>
   .userInfomation {

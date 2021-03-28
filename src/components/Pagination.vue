@@ -12,49 +12,49 @@
 <script>
 import $ from 'jquery'
 export default {
-    name: 'Pagination',
-    data (){
-        return {
-            pagebtns:[1,2,3,4,5,'......'],
-            currentPage:1,
-            judge:false
-        }
-    },
-    methods:{
-        changeBtn(page){
-            if(typeof page != 'number'){
-                switch(page.target.innerText){
-                    case'<<':
-                    $('button.currentPage').prev().click();
-                    break;
-                    case'>>':
-                    $('button.currentPage').next().click();
-                    break;
-                    case'首页':
-                    this.pagebtns=[1,2,3,4,5,'......'];
-                    this.changeBtn(1);
-                    break;
-                    default:
-                    break;
-                }
-                return;
-            }
-            this.currentPage = page
-            if(page>4){
-                this.judge = true
-            } else {
-                this.judge = false
-            }
-            if(page == this.pagebtns[4]){
-                this.pagebtns.shift()
-                this.pagebtns.splice(4,0,this.pagebtns[3]+1)
-            } else if (page == this.pagebtns[0] && page!=1){
-                this.pagebtns.unshift(this.pagebtns[0]-1)
-                this.pagebtns.splice(5,1)
-            }
-            this.$emit("handleList",this.currentPage);
-        }
+  name: 'Pagination',
+  data () {
+    return {
+      pagebtns: [1, 2, 3, 4, 5, '......'],
+      currentPage: 1,
+      judge: false
     }
+  },
+  methods: {
+    changeBtn (page) {
+      if (typeof page !== 'number') {
+        switch (page.target.innerText) {
+          case '<<':
+            $('button.currentPage').prev().click()
+            break
+          case '>>':
+            $('button.currentPage').next().click()
+            break
+          case '首页':
+            this.pagebtns = [1, 2, 3, 4, 5, '......']
+            this.changeBtn(1)
+            break
+          default:
+            break
+        }
+        return
+      }
+      this.currentPage = page
+      if (page > 4) {
+        this.judge = true
+      } else {
+        this.judge = false
+      }
+      if (page === this.pagebtns[4]) {
+        this.pagebtns.shift()
+        this.pagebtns.splice(4, 0, this.pagebtns[3] + 1)
+      } else if (page === this.pagebtns[0] && page !== 1) {
+        this.pagebtns.unshift(this.pagebtns[0] - 1)
+        this.pagebtns.splice(5, 1)
+      }
+      this.$emit('handleList', this.currentPage)
+    }
+  }
 }
 </script>
 <style scoped>

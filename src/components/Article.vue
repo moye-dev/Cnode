@@ -71,8 +71,8 @@ export default {
     this.isLoading = true
     this.getArticleData()
   },
-  watch:{
-    '$route' (to,from){
+  watch: {
+    '$route' (to, from) {
       this.getArticleData()
     }
   }

@@ -57,18 +57,18 @@ export default {
     return {
       isLoading: false,
       posts: [],
-      postpage:1
+      postpage: 1
     }
   },
-  components:{
+  components: {
     pagination
-  }, 
+  },
   methods: {
     getData () {
       this.$http.get('https://cnodejs.org/api/v1/topics', {
-        params:{
-        page: this.postpage,
-        limit: 20
+        params: {
+          page: this.postpage,
+          limit: 20
         }
 
       })
@@ -80,8 +80,8 @@ export default {
           console.log(err)
         })
     },
-    renderList(value){
-      this.postpage = value;
+    renderList (value) {
+      this.postpage = value
       this.getData()
     }
   },

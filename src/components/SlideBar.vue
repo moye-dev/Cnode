@@ -58,14 +58,14 @@
 </template>
 <script>
 export default {
-    name: 'SlideBar',
-    data () {
-        return {
-            isLoading:false,
-            userinfo: {}
-        }
-    },
-    methods: {
+  name: 'SlideBar',
+  data () {
+    return {
+      isLoading: false,
+      userinfo: {}
+    }
+  },
+  methods: {
     getData () {
       this.$http.get(`https://cnodejs.org/api/v1/user/${this.$route.params.name}`)
         .then(res => {
@@ -76,19 +76,19 @@ export default {
           console.log(err)
         })
     }
+  },
+  computed: {
+    topiclimitby5 () {
+      if (this.userinfo.recent_topics) {
+        return this.userinfo.recent_topics.slice(0, 5)
+      }
     },
-    computed:{
-        topiclimitby5(){
-            if(this.userinfo.recent_topics){
-                return this.userinfo.recent_topics.slice(0,5);
-            }
-        },
-        replylimitby5(){
-            if(this.userinfo.recent_replies){
-                return this.userinfo.recent_replies.slice(0,5);
-            }
-        }
-    },
+    replylimitby5 () {
+      if (this.userinfo.recent_replies) {
+        return this.userinfo.recent_replies.slice(0, 5)
+      }
+    }
+  },
   beforeMount () {
     this.isLoading = true
     this.getData()
